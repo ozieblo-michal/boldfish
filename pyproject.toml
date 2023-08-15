@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "boldfish"
+version = "0.1.0"
+description = "Bold Fish"
+authors = ["ozieblo michal <ozieblo.michal@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+openai = "^0.27.8"
+poetry-plugin-dotenv = "^0.5.2"
+pandas = "^2.0.3"
+http-client = "^0.1.22"
+black = "^23.7.0"
+pylama = "^8.4.1"
+pathlib = "^1.0.1"
+numbers-parser = "^4.4.2"
+genanki = "^0.13.0"
+bs4 = "^0.0.1"
+pytest = "^7.4.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
