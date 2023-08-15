@@ -17,8 +17,7 @@ It is a software application that combines the following three actions:
 It is intended for students and professionals who, like the author, have tendencies to list entities on the margin.
 
 The application solves the problem of time-consuming preparation of simple flashcards, and additionally
-revises texts so that the most concise parts of words are highlighted based on BR method
-- a reading system that supports the reading flow (the eye is guided through the text using of typographic highlights, more about: https://bionic-reading.com/br-about/)
+revises texts so that the most concise parts of words are highlighted based on BR method - a reading system that supports the reading flow (the eye is guided through the text using of typographic highlights, more about: https://bionic-reading.com/br-about/)
 
 
 ## Why you should try? :bulb:
@@ -54,6 +53,9 @@ Using the CLI
 
 #### Output example:
 ![files](images/outputexample.png)
+
+#### Anki BR card example:
+![files](images/ankidemoBRcard.png)
 
 
 ## Externally provided API :link:
