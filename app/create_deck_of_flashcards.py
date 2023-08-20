@@ -1,12 +1,11 @@
+import logging
 import os
-import genanki
 import random
 import re
-import logging
-
 from pathlib import Path
-from bs4 import BeautifulSoup, Comment
 
+import genanki
+from bs4 import BeautifulSoup, Comment
 from get_deck_name import get_deck_name
 
 

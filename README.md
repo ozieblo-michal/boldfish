@@ -17,7 +17,8 @@ It is a software application that combines the following three actions:
 It is intended for students and professionals who, like the author, have tendencies to list entities on the margin.
 
 The application solves the problem of time-consuming preparation of simple flashcards, and additionally
-revises texts so that the most concise parts of words are highlighted based on BR method - a reading system that supports the reading flow (the eye is guided through the text using of typographic highlights, more about: https://bionic-reading.com/br-about/)
+revises texts so that the most concise parts of words are highlighted based on BR method
+- a reading system that supports the reading flow (the eye is guided through the text using of typographic highlights, more about: https://bionic-reading.com/br-about/)
 
 
 ## Why you should try? :bulb:
@@ -36,26 +37,57 @@ To use the deck, check https://docs.ankiweb.net/getting-started.html
 
 ## How it works? :helicopter:
 
-Using the CLI
-1. indicate the folder where you want to save the product of this application:
-    - flashcard decks in `.apkg` format
-    - table of terms and definitions in `.csv` format
-    - log
-2. name the deck
-3. enter the address of the file in `.csv` or `.json` format, or enter the terms yourself directly in the terminal line
-4. approve the proposed definitions, regenerate them or reject them
+### Using as class method:
 
-#### CLI demo:
-![CLI](images/CLIdemo.png)
+```python
+from boldfish import Boldfish
 
-#### Log example:
+# to use OpenAI to assign definitions
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY") 
+
+# to use Bionic Reading on definitions
+BIONIC_READING_X_RAPID_API_KEY = os.environ.get("BIONIC_READING_X_RAPID_API_KEY") 
+
+# only to assign definitions or create Anki deck
+boldfish = Boldfish(OPENAI_API_KEY)
+
+# or
+
+"""
+    openai.api_key value automatically by reading it from an environment variable
+    named OPENAI_API_KEY. The OpenAI Python library is designed to check for this
+    environment variable by default
+"""
+boldfish = Boldfish()
+
+# to assign definitions, allow format using Bionic Reading or create Anki deck
+boldfish = Boldfish(OPENAI_API_KEY, BIONIC_READING_X_RAPID_API_KEY)
+
+
+# example to assign the definitions, based on string input or the path
+definitions = boldfish.get_definitions("fish")
+definitions = boldfish.get_definitions("fish, Python, Anki")
+definitions = boldfish.get_definitions("./data/test.csv")
+definitions = boldfish.get_definitions("./data/test.json")
+
+# to create the deck
+# definitions: dictionary entity:'definition'
+boldfish.create_deck_of_flashcards(definitions, 
+                                   "<<deckName>>",
+                                   "<<output-path>>")
+```
+
+### Using the CLI:
+
+```console
+poetry run python app/cli.py  
+```
+
+#### Log example (only CLI):
 ![log](images/logexample.png)
 
-#### Output example:
+#### Output example (Anki flashcard):
 ![files](images/outputexample.png)
-
-#### Anki BR card example:
-![files](images/ankidemoBRcard.png)
 
 
 ## Externally provided API :link:
@@ -68,7 +100,15 @@ To use this package you need to provide 2 keys in the `.env` file: `OPENAI_API_K
 - https://help.openai.com/en/articles/7042661-chatgpt-api-transition-guide
 - https://www.geeksforgeeks.org/how-to-use-chatgpt-api-in-python/
 
-> If you have trouble using the ``.env`` file, please check: https://stackoverflow.com/questions/67107007/how-do-i-set-an-environment-variable-dynamically-when-using-poetry-shell
+> If you have trouble using the ``.env`` file, please check: 
+
+```
+poetry env remove 3.10  
+sudo poetry cache clear --all pypi
+env $(cat .env) poetry shell  
+poetry install
+poetry run python app/main.py
+```
 
 
 ## Testing and security :police_car:

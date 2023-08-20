@@ -1,8 +1,8 @@
+from io import StringIO
+
+import constants
 import openai
 import pandas as pd
-import constants
-
-from io import StringIO
 
 
 def openai_answer(

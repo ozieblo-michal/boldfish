@@ -1,16 +1,17 @@
 import http.client
-import constants
 import logging
+
+import constants
 
 
 def bionic_reading_revise(
     definitions: dict, BIONIC_READING_X_RAPID_API_KEY: str
 ) -> dict:
-    """Uses the Bionic Reading API to format each definition text 
+    """Uses the Bionic Reading API to format each definition text
 
     Args:
         definitions (dict): concepts and definitions given as a plain string
-        BIONIC_READING_X_RAPID_API_KEY (str): 
+        BIONIC_READING_X_RAPID_API_KEY (str):
         from https://rapidapi.com/bionic-reading-bionic-reading-default/api/bionic-reading1
 
     Returns:

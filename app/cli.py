@@ -1,29 +1,30 @@
-import os
-import pandas as pd
-import logging
 import datetime
+import logging
+import os
 import sys
 
-from get_output_directory import get_output_directory
-from get_entities import get_entities
-from openai_answer import openai_answer
-from manually_validate_definitions import manually_validate_definitions
+import pandas as pd
 from bionic_reading_revise import bionic_reading_revise
-from get_deck_name import get_deck_name
-from create_deck_of_flashcards import create_deck_of_flashcards
-from loading_animation import loading_animation
 from configure_logger import configure_logger
+from create_deck_of_flashcards import create_deck_of_flashcards
+from get_deck_name import get_deck_name
+from get_entities import get_entities
+from get_output_directory import get_output_directory
+from loading_animation import loading_animation
+from manually_validate_definitions import manually_validate_definitions
+from openai_answer import openai_answer
 
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 BIONIC_READING_X_RAPID_API_KEY = os.environ.get("BIONIC_READING_X_RAPID_API_KEY")
 
 
-class NoValidatedConceptsAfterTheFirstIteration(Exception):
-    ...
-    pass
-
-
 if __name__ == "__main__":
+    try:
+        os.environ["OPENAI_API_KEY"]
+        os.environ["BIONIC_READING_X_RAPID_API_KEY"]
+    except KeyError:
+        print("Environment variables not set!")
+
     logging.basicConfig()
     logging.getLogger().setLevel(logging.INFO)
 
@@ -78,8 +79,12 @@ if __name__ == "__main__":
             selected_definitions = definitions_repeated
 
     try:
-        final_definitions = {**selected_definitions, **definitions_repeated}
-    except NoValidatedConceptsAfterTheFirstIteration:
+        if definitions_to_be_repeated:
+            final_definitions = {**selected_definitions, **definitions_repeated}
+        else:
+            final_definitions = selected_definitions
+    except Exception:
+        # lack of selected_definitions or no definitions_repeated
         final_definitions = selected_definitions
 
     if final_definitions:

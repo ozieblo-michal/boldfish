@@ -1,11 +1,9 @@
-import pandas as pd
 import logging
 from pathlib import Path
 
+import pandas as pd
 from check_manually_entered_entities import check_manually_entered_entities
-
 from log_entities import log_entities
-
 from validate_path import validate_path
 
 

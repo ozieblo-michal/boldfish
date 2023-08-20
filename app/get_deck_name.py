@@ -1,6 +1,5 @@
 import logging
 
-
 from validate_deck_name import validate_deck_name
 
 

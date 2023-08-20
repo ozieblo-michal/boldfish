@@ -1,5 +1,5 @@
 TASK_DEFINITION = (
-    "You are a intelligent assistant to assign a true short and concise definition "
+    "You are an intelligent assistant to assign a true short and concise definition "
     "for each given concept or names (authors) expressed as a simple word or words, "
     "not sentences, optionally separated by commas if multiple. Treat the conversation "
     "as new each time with no connection to the past. Assume that the recipient has "
@@ -10,6 +10,7 @@ TASK_DEFINITION = (
     "formula in natural language. Try to answer as if you were asking about "
     "a given concept in the context of how, or why something works like that, "
     "and it concerns people, what someone did or is doing. "
+    "The answer should work as the content for the definition on a flashcard for each concept or name."
     "Output must be a table with two columns named 'concept' and 'definition', "
     "in the semicolon-separated values format to be copied further with a semicolon, "
     "not a comma, as the separator. 'concept' column must include only a given input "

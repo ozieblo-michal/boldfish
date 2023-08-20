@@ -1,7 +1,18 @@
 import logging
 
 
-def configure_logger(log_path: str):
+def configure_logger(log_path: str) -> logging.Logger:
+    """Configuration for the entire package, in order to print
+    the content of logs to the console in the course of script
+    processing and parallel writing them to a file
+    in the indicated destination
+
+    Args:
+        log_path (str): output directory
+
+    Returns:
+        _type_: _description_
+    """
     logger = logging.getLogger("configure_logger")
 
     logger.setLevel(logging.DEBUG)
