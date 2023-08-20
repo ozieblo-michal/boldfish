@@ -83,11 +83,14 @@ boldfish.create_deck_of_flashcards(definitions,
 poetry run python app/cli.py  
 ```
 
-#### Log example (only CLI):
+#### Anki BR card example:
+ ![files](images/ankidemoBRcard.png)
+
+#### Log example (CLI):
 ![log](images/logexample.png)
 
-#### Output example (Anki flashcard):
-![files](images/outputexample.png)
+#### Output example (CLI):
+ ![files](images/outputexample.png)
 
 
 ## Externally provided API :link:
