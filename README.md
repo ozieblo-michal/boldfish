@@ -37,7 +37,7 @@ To use the deck, check https://docs.ankiweb.net/getting-started.html
 
 ## How it works? :helicopter:
 
-### Using as class method:
+### Using as class methods:
 
 ```python
 from boldfish import Boldfish
@@ -103,14 +103,14 @@ To use this package you need to provide 2 keys in the `.env` file: `OPENAI_API_K
 - https://help.openai.com/en/articles/7042661-chatgpt-api-transition-guide
 - https://www.geeksforgeeks.org/how-to-use-chatgpt-api-in-python/
 
-> If you have trouble using the ``.env`` file, please check: 
+> If you have trouble using the `.env` file, please check: 
 
 ```
 poetry env remove 3.10  
 sudo poetry cache clear --all pypi
 env $(cat .env) poetry shell  
 poetry install
-poetry run python app/main.py
+poetry run python app/cli.py
 ```
 
 
